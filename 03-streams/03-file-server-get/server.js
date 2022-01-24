@@ -41,9 +41,9 @@ server.on('request', (req, res) => {
           }
         })
 
-        .on('open', () => { })
+        .on('open', () => console.log('open'))
 
-        .on('close', () => { });
+        .on('close', () => console.log('close'));
 
       break;
 
