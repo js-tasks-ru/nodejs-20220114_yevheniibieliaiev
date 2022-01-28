@@ -17,17 +17,7 @@ server.on('request', (req, res) => {
       const stream = fs.createReadStream(filepath);
       const pathNameSplit = url.pathname.split("/").filter(elem => elem !== "");
 
-      const body = [];
       stream
-        .on('data', (chunk) => {
-          body.push(chunk);
-        })
-
-        .on('end', () => {
-          res.statusCode = 200;
-          res.end(Buffer.concat(body));
-        })
-
         .on('error', () => {
           if (pathNameSplit.length > 1) {
             res.statusCode = 400;
@@ -40,10 +30,7 @@ server.on('request', (req, res) => {
             res.end('Internal Server Error');
           }
         })
-
-        .on('open', () => { })
-
-        .on('close', () => { });
+        .pipe(res);
 
       break;
 

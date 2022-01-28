@@ -10,6 +10,11 @@ describe('testing-configuration-logging/unit-tests', () => {
           min: 10,
           max: 20,
         },
+        age: {
+          type: 'number',
+          min: 18,
+          max: 27,
+        }
       });
 
       const errors = validator.validate({ name: 'Lalala' });
