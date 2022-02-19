@@ -6,7 +6,8 @@ module.exports.productsByQuery = async function productsByQuery(ctx, next) {
 
   if (!query) {
     ctx.status = 404;
-    ctx.body = "Bad Request"
+    ctx.body = "Bad Request";
+    return;
   }
 
   const result = await Product
